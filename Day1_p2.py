@@ -8,7 +8,8 @@ trie = {"o": {"on": {"one": '!'}},
         "s": {"si": {"six": '!'},
               "se": {"sev": {"seve": {"seven": '!'}}}},
         "e": {"ei": {"eig": {"eigh": {"eight": '!'}}}},
-        "n": {"ni": {"nin": {"nine": '!'}}}}
+        "n": {"ni": {"nin": {"nine": '!'}}}
+}
 
 word_to_number = {"one": 1,
                   "two": 2,
