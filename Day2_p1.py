@@ -9,31 +9,22 @@ with open('./Day2_Input.txt','r', encoding="utf-8") as file:
     }
 
     for line in file:
-        game_id = ''
-
-        for char in line:
-            if char == ':':
-                break
-            elif char.isdigit():
-                game_id += char
-
-        game_id = int(game_id)
-        game_turns = line.split(':')[1].split(';')
-
-        stop = False
+        game_id = int(line.split(": ")[0].split(" ")[1])
+        game_turns = line.split(': ')[1].split('; ')
+        valid = True
         for turn in game_turns:
-            for text in turn.split(','):
-                color_turn = text.strip(' ')
-                num_color, color = int(color_turn.split()[0]), color_turn.split()[1]
+            for color_turn in turn.split(', '):
+                num_color, color = color_turn.strip().split(' ')
+                num_color = int(num_color)
 
                 if num_color > color_limits[color]:
-                    stop = True
+                    valid = False
                     break
-            if stop:
+            if not valid:
                 break
 
-        if stop:
-            stop = False
+        if not valid:
+            valid = True
             continue
         else:
             output += game_id
