@@ -18,6 +18,7 @@ for line in file_parse:
     hand, bid = line.split(' ')
     scored_hand = Counter(hand)
 
+    # five of a kind right away, no J
     if len(scored_hand) == 1:
         five_of_kind[hand] = bid
     else:
