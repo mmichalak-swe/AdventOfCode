@@ -1,24 +1,9 @@
 from collections import Counter
 
-SORT_ORDER = {"A": 0,
-              "K": 1,
-              "Q": 2,
-              "J": 3,
-              "T": 4,
-              "9": 5,
-              "8": 6,
-              "7": 7,
-              "6": 8,
-              "5": 9,
-              "4": 10,
-              "3": 11,
-              "2": 12
-            }
+SORT_ORDER = ["2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"]
 
-with open("./D$ay7/Day7_Input.txt",'r', encoding="utf-8") as file:
+with open("./Day7/Day7_Input.txt",'r', encoding="utf-8") as file:
     file_parse = file.read().split('\n')
-
-# hands = {}
 
 five_of_kind = {}
 four_of_kind = {}
@@ -30,7 +15,6 @@ high_card = {}
 
 for line in file_parse:
     hand, bid = line.split(' ')
-    # hands[hand] = bid
     scored_hand = Counter(hand)
 
     # high card
@@ -60,10 +44,21 @@ for line in file_parse:
         five_of_kind[hand] = bid
 
 
-print("Num of five_of_kind: " + str(len(five_of_kind)))
-print("Num of four_of_kind: " + str(len(four_of_kind)))
-print("Num of full_house: " + str(len(full_house)))
-print("Num of three_of_kind: " + str(len(three_of_kind)))
-print("Num of two_pair: " + str(len(two_pair)))
-print("Num of one_pair: " + str(len(one_pair)))
-print("Num of high_card: " + str(len(high_card)))
+five_of_kind = dict(sorted(five_of_kind.items(), key=lambda x: [SORT_ORDER.index(c) for c in x[0]]))
+four_of_kind = dict(sorted(four_of_kind.items(), key=lambda x: [SORT_ORDER.index(c) for c in x[0]]))
+full_house = dict(sorted(full_house.items(), key=lambda x: [SORT_ORDER.index(c) for c in x[0]]))
+three_of_kind = dict(sorted(three_of_kind.items(), key=lambda x: [SORT_ORDER.index(c) for c in x[0]]))
+two_pair = dict(sorted(two_pair.items(), key=lambda x: [SORT_ORDER.index(c) for c in x[0]]))
+one_pair = dict(sorted(one_pair.items(), key=lambda x: [SORT_ORDER.index(c) for c in x[0]]))
+high_card = dict(sorted(high_card.items(), key=lambda x: [SORT_ORDER.index(c) for c in x[0]]))
+
+ordered_hands = {**high_card, **one_pair, **two_pair, **three_of_kind, **full_house, **four_of_kind, **five_of_kind}
+
+output = 0
+multiplier = 1
+
+for val in ordered_hands.values():
+    output += int(val) * multiplier
+    multiplier += 1
+
+print(output)
