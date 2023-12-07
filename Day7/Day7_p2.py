@@ -21,13 +21,14 @@ for line in file_parse:
     # five of a kind right away, no J
     if len(scored_hand) == 1:
         five_of_kind[hand] = bid
-    else:
-        if 'J' in scored_hand.keys():
-            j_to_add = scored_hand['J']
-            del scored_hand['J']
-            scored_hand = dict(sorted(scored_hand.items(), key=lambda x: (x[1], [SORT_ORDER_ASC.index(c) for c in x[0]])))
-            last_key, last_val = _, scored_hand[last_key] = scored_hand.popitem()
-            scored_hand[last_key] = last_val + j_to_add
+
+    # if J in hand
+    elif scored_hand.get('J', 0) > 0:
+        j_to_add = scored_hand['J']
+        del scored_hand['J']
+        scored_hand = dict(sorted(scored_hand.items(), key=lambda x: (x[1], [SORT_ORDER_ASC.index(c) for c in x[0]])))
+        last_key, last_val = _, scored_hand[last_key] = scored_hand.popitem()
+        scored_hand[last_key] = last_val + j_to_add
 
     # high card
     if len(scored_hand) == 5:
