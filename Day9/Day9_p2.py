@@ -4,9 +4,9 @@ def check(nums):
 
 def layers(nums):
     if check(nums) is True:
-        return nums[-1]
+        return nums[0]
     new_nums = [(nums[i] - nums[i-1]) for i in range(1, len(nums))]
-    return nums[-1] + layers(new_nums)
+    return nums[0] - layers(new_nums)
 
 
 with open("./Day9/Day9_Input.txt",'r', encoding="utf-8") as file:
