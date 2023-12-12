@@ -5,19 +5,19 @@ with open("./Day11/Day11_Input.txt",'r', encoding="utf-8") as file:
 max_rows = len(grid)
 max_cols = len(grid[0])
 
-double_rows = set()
+expanded_rows = set()
 for row in range(max_rows):
     if all(i == '.' for i in grid[row]):
-        double_rows.add(row)
+        expanded_rows.add(row)
 
-double_cols = set()
+expanded_cols = set()
 for col in range(max_cols):
     check = True
     for row in range(max_rows):
         if grid[row][col] != '.':
             check = False
     if check:
-        double_cols.add(col)
+        expanded_cols.add(col)
 
 galaxies = []
 for row in range(max_rows):
@@ -40,11 +40,11 @@ for i, start_galaxy in enumerate(galaxies):
         higher_col = end_galaxy_col if end_galaxy_col > start_galaxy_col else start_galaxy_col
 
         for extra_row in range(lower_row + 1, higher_row):
-            if extra_row in double_rows:
+            if extra_row in expanded_rows:
                 rows_between += 999999
 
         for extra_col in range(lower_col + 1, higher_col):
-            if extra_col in double_cols:
+            if extra_col in expanded_cols:
                 cols_between += 999999
 
         output += rows_between + cols_between
