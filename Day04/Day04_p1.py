@@ -1,7 +1,7 @@
 output = 0
 
 
-with open("./Day4_Input.txt",'r', encoding="utf-8") as file:
+with open("./Day04/Day04_Input.txt",'r', encoding="utf-8") as file:
     for line in file:
         clean_line = line.split(': ')[1].strip()
         first_half, second_half = [line.strip() for line in clean_line.split(' | ')]

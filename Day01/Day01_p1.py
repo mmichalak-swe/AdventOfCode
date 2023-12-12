@@ -1,7 +1,7 @@
 output = 0
 
 
-with open('./Day1_Input.txt','r', encoding="utf-8") as myfile:
+with open('./Day01/Day01_Input.txt','r', encoding="utf-8") as myfile:
     for line in myfile:
         first_digit = ''
         second_digit = ''

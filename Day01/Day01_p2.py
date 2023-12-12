@@ -37,7 +37,7 @@ def word_checker(lookup, test_str, idx=1):
     return word_checker(lookup[curr], test_str, idx+1)
 
 
-with open('./Day1_Input.txt','r', encoding="utf-8") as myfile:
+with open('./Day01/Day01_Input.txt','r', encoding="utf-8") as myfile:
     for line in myfile:
         line = line.strip()
         first_digit = ''

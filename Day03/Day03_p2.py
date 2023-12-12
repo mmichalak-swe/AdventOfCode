@@ -1,7 +1,8 @@
+from math import prod
 output = 0
 
 
-with open("./Day3_Input.txt",'r', encoding="utf-8") as file:
+with open("./Day03/Day03_Input.txt",'r', encoding="utf-8") as file:
     grid = [list(line.strip()) for line in file]
 
     maxRow = len(grid)
@@ -33,6 +34,8 @@ with open("./Day3_Input.txt",'r', encoding="utf-8") as file:
             if char == '.' or char.isdigit():
                 continue
 
+            nums_found = []
+
             for idx in range(-1, 2):
                 for jdx in range(-1, 2):
                     if idx == 0 and jdx == 0:
@@ -43,7 +46,10 @@ with open("./Day3_Input.txt",'r', encoding="utf-8") as file:
                         num_left = num_builder(new_row, new_col-1, -1)
                         num_right = num_builder(new_row, new_col+1, 1)
                         num_found = int(num_left + grid[new_row][new_col] + num_right)
-                        output += num_found
+                        nums_found.append(num_found)
                         grid[new_row][new_col] = 'X'
+
+            if len(nums_found) == 2:
+                output += prod(nums_found)
 
 print(output)

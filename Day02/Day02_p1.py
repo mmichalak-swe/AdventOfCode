@@ -1,7 +1,7 @@
 output = 0
 
 
-with open('./Day2_Input.txt','r', encoding="utf-8") as file:
+with open('./Day02/Day02_Input.txt','r', encoding="utf-8") as file:
 
     color_limits = {"red": 12,
                     "green": 13,
