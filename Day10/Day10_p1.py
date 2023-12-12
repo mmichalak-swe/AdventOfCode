@@ -3,7 +3,6 @@ import numbers
 
 
 with open("./Day10/Day10_Input.txt",'r', encoding="utf-8") as file:
-# with open("./Day10/Day10_Input_test.txt",'r', encoding="utf-8") as file:
     file_parse = file.read().split('\n')
     grid = [list(line) for line in file_parse]
 
