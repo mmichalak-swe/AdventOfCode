@@ -9,7 +9,7 @@ def layers(nums):
     return nums[0] - layers(new_nums)
 
 
-with open("./Day9/Day9_Input.txt",'r', encoding="utf-8") as file:
+with open("./Day09/Day09_Input.txt",'r', encoding="utf-8") as file:
     file_parse = file.read().split('\n')
 
 output = 0

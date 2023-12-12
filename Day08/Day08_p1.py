@@ -1,4 +1,4 @@
-with open("./Day8/Day8_Input.txt",'r', encoding="utf-8") as file:
+with open("./Day08/Day08_Input.txt",'r', encoding="utf-8") as file:
     file_parse = file.read().split('\n')
 
 moves = file_parse[0]

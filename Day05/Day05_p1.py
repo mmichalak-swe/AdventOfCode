@@ -1,6 +1,6 @@
 import copy
 
-with open("./Day5/Day5_Input.txt",'r', encoding="utf-8") as file:
+with open("./Day05/Day05_Input.txt",'r', encoding="utf-8") as file:
     file_parse = file.read().split('\n\n')
 
 seed_line_parse = [int(x) for x in file_parse[0].split(': ')[1].split(' ')]

@@ -1,4 +1,4 @@
-with open("./Day6/Day6_Input.txt",'r', encoding="utf-8") as file:
+with open("./Day06/Day06_Input.txt",'r', encoding="utf-8") as file:
     file_parse = file.read().split('\n')
 
 time = [int(x) for x in file_parse[0].split(': ')[1].strip(' ').split()]

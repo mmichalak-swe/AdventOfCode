@@ -2,7 +2,7 @@ from collections import Counter
 
 SORT_ORDER = ["2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"]
 
-with open("./Day7/Day7_Input.txt",'r', encoding="utf-8") as file:
+with open("./Day07/Day07_Input.txt",'r', encoding="utf-8") as file:
     file_parse = file.read().split('\n')
 
 five_of_kind = {}
