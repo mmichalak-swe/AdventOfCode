@@ -6,8 +6,7 @@ def swap(grid, r1, c1, r2, c2):
 
 
 def rotate_cw(grid):
-    inter = list(zip(*grid[::-1]))
-    return [list(r) for r in inter]
+    return [list(r) for r in list(zip(*grid[::-1]))]
 
 
 def tilt(grid, ROWS, COLS, direction):
@@ -42,7 +41,6 @@ def score(grid, ROWS, COLS):
 
 
 with open("./Day14/Day14_Input.txt",'r', encoding="utf-8") as file:
-# with open("./Day14/Day14_Input_test.txt",'r', encoding="utf-8") as file:
     file_parse = file.read().split('\n')
 
 grid = [[char for char in line] for line in file_parse]
@@ -51,17 +49,7 @@ COLS = len(grid[0])
 GRIDS = []
 grid_num = 0
 
-tilt(grid, ROWS, COLS, (-1, 0))
-grid = rotate_cw(grid)
-tilt(grid, ROWS, COLS, (-1, 0))
-grid = rotate_cw(grid)
-tilt(grid, ROWS, COLS, (-1, 0))
-grid = rotate_cw(grid)
-tilt(grid, ROWS, COLS, (-1, 0))
-grid = rotate_cw(grid)
-GRIDS = [deepcopy(grid)]
-
-for cycle in range (1, 999999999):
+for cycle in range (1000000000):
     for _ in range(4):
         tilt(grid, ROWS, COLS, (-1, 0))
         grid = rotate_cw(grid)
