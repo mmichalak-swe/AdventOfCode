@@ -25,7 +25,7 @@ for seq in file_parse:
         label, focal_length = seq.split('=')
 
     box_num = hash_algo(label)
-    
+
     if add_op:
         boxes[box_num][label] = int(focal_length)
     else:
