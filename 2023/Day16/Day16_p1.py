@@ -12,10 +12,10 @@ COLS = len(grid[0])
 energized = [[0 for j in range(COLS)] for i in range(ROWS)]
 
 moves = {'RIGHT': (0, 1),
-            'DOWN': (1, 0),
-            'LEFT': (0, -1),
-            'UP': (-1, 0)
-            }
+         'DOWN': (1, 0),
+         'LEFT': (0, -1),
+         'UP': (-1, 0)
+         }
 
 def move(heading):
     return moves[heading]
