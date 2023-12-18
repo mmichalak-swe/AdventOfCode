@@ -9,8 +9,6 @@ grid = [[char for char in line] for line in file_parse]
 ROWS = len(grid)
 COLS = len(grid[0])
 
-energized = [[0 for j in range(COLS)] for i in range(ROWS)]
-
 moves = {'RIGHT': (0, 1),
          'DOWN': (1, 0),
          'LEFT': (0, -1),
@@ -61,30 +59,17 @@ def recursive_beams(grid, row, col, heading):
 
     energized[row][col] = 1
 
-    if curr_char == '|':
-        if heading in ['LEFT', 'RIGHT']:
-            recursive_beams(grid, row + moves['UP'][0], col + moves['UP'][1], 'UP')
-            recursive_beams(grid, row + moves['DOWN'][0], col + moves['DOWN'][1], 'DOWN')
-        else:
-            new_heading = turn(heading, curr_char)
-            recursive_beams(grid, row + moves[heading][0], col + moves[heading][1], new_heading)
-    elif curr_char == '-':
-        if heading in ['UP', 'DOWN']:
-            recursive_beams(grid, row + moves['LEFT'][0], col + moves['LEFT'][1], 'LEFT')
-            recursive_beams(grid, row + moves['RIGHT'][0], col + moves['RIGHT'][1], 'RIGHT')
-        else:
-            new_heading = turn(heading, curr_char)
-            recursive_beams(grid, row + moves[new_heading][0], col + moves[new_heading][1], new_heading)
-    elif curr_char == '.':
+    if curr_char == '|' and heading in ['LEFT', 'RIGHT']:
+        recursive_beams(grid, row + moves['UP'][0], col + moves['UP'][1], 'UP')
+        recursive_beams(grid, row + moves['DOWN'][0], col + moves['DOWN'][1], 'DOWN')
+    elif curr_char == '-' and heading in ['UP', 'DOWN']:
+        recursive_beams(grid, row + moves['LEFT'][0], col + moves['LEFT'][1], 'LEFT')
+        recursive_beams(grid, row + moves['RIGHT'][0], col + moves['RIGHT'][1], 'RIGHT')
+    else:
         new_heading = turn(heading, curr_char)
         recursive_beams(grid, row + moves[new_heading][0], col + moves[new_heading][1], new_heading)
-    elif curr_char == '/':
-        new_heading = turn(heading, curr_char)
-        recursive_beams(grid, row + moves[new_heading][0], col + moves[new_heading][1], new_heading)
-    elif curr_char == '\\':
-        new_heading = turn(heading, curr_char)
-        recursive_beams(grid, row +moves[new_heading][0], col + moves[new_heading][1], new_heading)
 
 
+energized = [[0 for j in range(COLS)] for i in range(ROWS)]
 recursive_beams(grid, 0, 0, 'RIGHT')
 print(sum([sum(row) for row in energized]))
