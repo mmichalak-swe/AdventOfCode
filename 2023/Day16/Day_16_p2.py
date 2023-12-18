@@ -15,10 +15,6 @@ moves = {'RIGHT': (0, 1),
          'UP': (-1, 0)
          }
 
-def move(heading):
-    return moves[heading]
-
-
 def turn(heading, char):
     if char == '.':
         return heading
